@@ -19,21 +19,19 @@ function transformStateWithClones(state, actions) {
         for (const key in keysToRemove) {
           delete stateCopy[keysToRemove[key]];
         }
-        stateArray.push({ ...stateCopy });
-        continue;
+        break;
       case 'addProperties':
         for (const key in extraData) {
           stateCopy[key] = extraData[key];
         }
-        stateArray.push({ ...stateCopy });
-        continue;
+        break;
       case 'clear':
         for (const key in stateCopy) {
           delete stateCopy[key];
         }
-        stateArray.push({ ...stateCopy });
-        continue;
+        break;
     }
+    stateArray.push({ ...stateCopy });
   }
 
   return stateArray;
